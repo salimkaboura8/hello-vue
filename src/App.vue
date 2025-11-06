@@ -2,8 +2,10 @@
   <div>
     <h1>{{ title }}</h1>
 
-    <input v-model="newStudent" placeholder="Ajouter un étudiant" />
-    <button @click="addStudent">Ajouter</button>
+    <div class="add">
+      <input v-model="newStudent" placeholder="Ajouter un étudiant" />
+      <button @click="addStudent">Ajouter</button>
+    </div>
 
     <ul>
       <li v-for="student in students" :key="student.id">
@@ -17,8 +19,8 @@
 
     <p v-if="students.length === 0">Aucun étudiant</p>
     <p>Nombre d'étudiants : {{ studentCount }}</p>
-    <p>Compteur global : {{ counter.count }}</p>
-    <button @click="counter.count++">Incrémenter</button>
+    <AnimatedCounter :count="counter.count" />
+    <button @click="counter.count++">Clique ici</button>
     <br />
     <a :href="externalUrl" target="_blank">Lien Vue JS</a>
   </div>
@@ -36,6 +38,7 @@ import {
   onBeforeMount,
 } from "vue";
 import axios from "axios";
+import AnimatedCounter from "./components/AnimatedCounter.vue";
 
 // 🎯 Composition API
 const title = ref("Liste des étudiants");
@@ -100,6 +103,15 @@ div {
   font-family: "Segoe UI", sans-serif;
 }
 
+.add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  box-shadow: none;
+  padding: 0;
+}
+
 /* Titre */
 h1 {
   font-size: 1.8rem;
@@ -112,7 +124,6 @@ h1 {
 input {
   width: 100%;
   padding: 10px 14px;
-  margin-bottom: 12px;
   border: 1px solid #d1d5db;
   border-radius: 8px;
   font-size: 1rem;
