@@ -20,7 +20,7 @@
     <p v-if="students.length === 0">Aucun étudiant</p>
     <p>Nombre d'étudiants : {{ studentCount }}</p>
     <AnimatedCounter :count="counter.count" />
-    <button @click="counter.count++">Clique ici</button>
+    <button class="increment" @click="counter.count++">Clique ici</button>
     <br />
     <a :href="externalUrl" target="_blank">Lien Vue JS</a>
   </div>

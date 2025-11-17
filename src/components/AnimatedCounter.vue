@@ -23,7 +23,7 @@ watch(
   () => props.count,
   () => {
     const id = Date.now();
-    const x = Math.random() * 90; // % position
+    const x = Math.random() * 90;
     const y = Math.random() * 90;
     const color = `hsl(${Math.random() * 360}, 80%, 60%)`;
 
