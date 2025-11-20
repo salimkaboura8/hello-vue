@@ -10,10 +10,7 @@
     <ul>
       <li v-for="student in students" :key="student.id">
         {{ student.name }}
-        <i
-          class="fas fa-trash trash-icon"
-          @click="removeStudent(student.id)"
-        ></i>
+        <i @click="removeStudent(student.id)"></i>
       </li>
     </ul>
 
@@ -40,7 +37,7 @@ import {
 import axios from "axios";
 import AnimatedCounter from "./components/AnimatedCounter.vue";
 
-// 🎯 Composition API
+// Composition API
 const title = ref("Liste des étudiants");
 const newStudent = ref("");
 const students = reactive([]);
@@ -48,21 +45,21 @@ const students = reactive([]);
 import { useCounterStore } from "./stores/counter";
 const counter = useCounterStore();
 
-// 🧮 Computed
+// Computed
 const studentCount = computed(() => students.length);
 
-// 👀 Watch
+// Watch
 watch(studentCount, (newVal) => {
   console.log(`Nombre d'étudiants : ${newVal}`);
 });
 
-// 🔄 Cycle de vie
+// Cycle de vie
 onBeforeMount(() => console.log("Avant le montage"));
 onMounted(() => fetchStudents());
 onUpdated(() => console.log("Composant mis à jour"));
 onUnmounted(() => console.log("Composant démonté"));
 
-// 🌐 Appel API
+// Appel API
 async function fetchStudents() {
   try {
     const res = await axios.get("https://jsonplaceholder.typicode.com/users");
@@ -73,7 +70,7 @@ async function fetchStudents() {
   }
 }
 
-// ➕ Ajouter un étudiant
+// Ajouter un étudiant
 function addStudent() {
   if (newStudent.value.trim()) {
     students.push({ id: Date.now(), name: newStudent.value });
@@ -81,18 +78,17 @@ function addStudent() {
   }
 }
 
-// ❌ Supprimer un étudiant
+// Supprimer un étudiant
 function removeStudent(id) {
   const index = students.findIndex((s) => s.id === id);
   if (index !== -1) students.splice(index, 1);
 }
 
-// 🔗 Lien dynamique
+// Lien dynamique
 const externalUrl = ref("https://vuejs.org");
 </script>
 
 <style scoped>
-/* Conteneur principal */
 div {
   max-width: 600px;
   margin: 40px auto;
