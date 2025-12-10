@@ -45,21 +45,17 @@ const students = reactive([]);
 import { useCounterStore } from "./stores/counter";
 const counter = useCounterStore();
 
-// Computed
 const studentCount = computed(() => students.length);
 
-// Watch
 watch(studentCount, (newVal) => {
   console.log(`Nombre d'étudiants : ${newVal}`);
 });
 
-// Cycle de vie
 onBeforeMount(() => console.log("Avant le montage"));
 onMounted(() => fetchStudents());
 onUpdated(() => console.log("Composant mis à jour"));
 onUnmounted(() => console.log("Composant démonté"));
 
-// Appel API
 async function fetchStudents() {
   try {
     const res = await axios.get("https://jsonplaceholder.typicode.com/users");
@@ -108,7 +104,6 @@ div {
   padding: 0;
 }
 
-/* Titre */
 h1 {
   font-size: 1.8rem;
   color: #111827;
@@ -116,7 +111,6 @@ h1 {
   text-align: center;
 }
 
-/* Champ de saisie */
 input {
   width: 100%;
   padding: 10px 14px;
@@ -131,7 +125,6 @@ input:focus {
   border-color: #3b82f6;
 }
 
-/* Bouton Ajouter */
 button {
   background-color: #3b82f6;
   color: white;
@@ -147,7 +140,6 @@ button:hover {
   background-color: #2563eb;
 }
 
-/* Liste des étudiants */
 ul {
   list-style: none;
   padding: 0;
@@ -165,7 +157,6 @@ li {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-/* Icône poubelle */
 .trash-icon {
   font-size: 1.2rem;
   color: #6b7280;
@@ -178,14 +169,12 @@ li {
   transform: scale(1.2);
 }
 
-/* Texte "Aucun étudiant" */
 p {
   text-align: center;
   color: #6b7280;
   margin-top: 20px;
 }
 
-/* Lien externe et router-link */
 a,
 router-link {
   display: inline-block;
